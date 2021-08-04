@@ -1,0 +1,24 @@
+/** Custom styles here! **/
+body {
+  background: #efefef;
+}
+body .container {
+  background: #fff;
+  border: 1px dashed #cecece;
+  border-radius: 10px;
+  margin: 0 auto 30px;
+  padding: 40px;
+}
+body .footer {
+  background: #525252;
+}
+body .footer p {
+  color: #9c9c9c;
+}
+body .footer p strong {
+  color: #fff;
+}
+body .footer p a {
+  color: #6c87ff;
+}
+/*# sourceMappingURL=styles.css.map */
