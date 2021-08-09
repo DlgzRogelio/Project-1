@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <div class="navbar-end">
+                    <!-- <div class="navbar-end">
                         <div class="navbar-item">
                             <div class="buttons">
                                 <a class="button is-primary">
@@ -41,7 +41,7 @@
                                 <a class="button is-light">Log in</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
 
@@ -50,7 +50,7 @@
 
                 <section class="section">
                     <div class="container">
-                        <h6 class="subtitle is-6"><strong>EX.A</strong> Columns 12</h6>
+                        <!-- <h6 class="subtitle is-6"><strong>Example A</strong> Columns 12</h6> -->
                         <h1 class="title is-1">FLIX FINDER</h1>
                         <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
 
@@ -58,13 +58,22 @@
                         <div class="columns">
                             <!-- The "column is-12" sets the total width -->
                             <div class="column block">
-                                <div class="field">
-                                    <label class="label">SEARCH FILTER(S)</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-success" type="text" placeholder="Enter the name the actress/actor, movie or genre..." value="">
+                                <label class="label">SEARCH FILTER(S)</label>
+                                <div class="field is-grouped">
+                                    <div class="control has-icons-right is-expanded">
+                                        <input class="input is-success" type="text" placeholder="Enter the name of the actress or actor" value=""> <!--, movie or genre...-->
+                                        <span class="icon is-right">
+                                            <i class="fas fa-check fa-sm"></i>
+                                          </span>
+                                    </div>                                    
+                                    <div class="control">
+                                        <a class="button is-info">Search</a>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-info">Surprise me</a>
                                     </div>
                                 </div>
-                                <div class="field">
+                                <!-- <div class="field">
                                     <div class="control">
                                         <label class="radio">
                                             <input type="radio" name="foobar"> Year of release
@@ -76,7 +85,7 @@
                                             <input type="radio" name="foobar" checked> Comments
                                         </label>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -84,8 +93,14 @@
                         <div class="columns">
                             <!-- The "column is-12" sets the total width -->
                             <div class="column block">
-                                <h2 class="block subtitle is-6"><strong>RESULT(S)</strong></h2>
-                                <table class="table is-fullwidth has-text-centered">
+                                <h2 class="block subtitle is-6"><strong>Instructions</strong></h2>
+                                <div class="column block">
+                                    <h2 class="block subtitle is-6">
+                                        Write here the instructions for the program to run
+                                    </h2>
+
+                                </div>
+                                <!-- <table class="table is-fullwidth has-text-centered">
                                     <thead>
                                     <tr>
                                         <th><abbr title="Position">Ord</abbr></th>
@@ -200,18 +215,18 @@
                                         <th><a href="#" target="_blank">Movie</a></th>
                                     </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
                                 <div class="tags is-normal">
-                                    <span class="tag">Artist</span>
-                                    <span class="tag">Artist movies</span>
-                                    <span class="tag">Artist top-10</span>
+                                    <span class="tag">Dope</span>
+                                    <span class="tag">Sick</span>
+                                    <span class="tag">Nice</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="container">
-                        <h6 class="subtitle is-6"><strong>EX.B</strong> Columns 4 + 8</h6>
+                        <h6 class="subtitle is-6"><strong>Example of the result's page</strong></h6>
                         <h1 class="title is-1">FLIX FINDER</h1>
                         <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
 
@@ -219,9 +234,12 @@
                         <div class="columns">
 
                             <!-- The "column is-4" sets the number of columns for the left side -->
-                            <div class="column is-4 block is-desktop">
-                                <h2 class="subtitle is-6"><strong>SEARCH FILTER(S)</strong></h2>
-                                <div class="field">
+                            <div class="column is-3 block is-desktop">
+                                <h2 class="subtitle is-6"><strong>Person's Name</strong></h2>
+                                <figure class="image is-128x128">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                                  </figure>
+                                <!-- <div class="field">
                                     <label class="label">CAST</label>
                                     <div class="control has-icons-left has-icons-right">
                                         <input class="input is-success" type="text" placeholder="Enter the name the actress/actor" value="">
@@ -232,9 +250,9 @@
                                             <i class="fas fa-check"></i>
                                         </span>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="field">
+                                <!-- <div class="field">
                                     <label class="label">FILM</label>
                                     <div class="control has-icons-left has-icons-right">
                                         <input class="input is-success" type="text" placeholder="Enter the name of the film" value="">
@@ -258,9 +276,9 @@
                                             <i class="fas fa-check"></i>
                                         </span>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="field">
+                                <!-- <div class="field">
                                     <label class="label">Subject</label>
                                     <div class="control">
                                         <div class="select">
@@ -292,18 +310,30 @@
                                     <div class="control">
                                         <button class="button is-link">SEARCH</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- The "column is-8" sets the number of columns for the right side -->
-                            <div class="column is-8 block is-desktop">
-                                <h2 class="block subtitle is-6"><strong>RESULT(S)</strong></h2>
-                                <div class="tags is-normal">
+                            <div class="column is-9 block is-desktop">
+                                <h3 class="block subtitle is-6"><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusantium a, dignissimos odit fugit consectetur sunt illum atque voluptate optio. Dignissimos laudantium ex rem numquam quae assumenda aliquam itaque odio!</strong></h3>
+                                <!-- <div class="tags is-normal">
                                     <span class="tag">Artist</span>
                                     <span class="tag">Artist movies</span>
                                     <span class="tag">Artist top-10</span>
+                                </div> -->
+                                <div class="columns">
+                                    <div class="column">
+                                        <h3 class="block subtitle is-6"><strong>Info Peli 1</strong></h3>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus temporibus sequi, quae laborum voluptates corrupti quibusdam incidunt perspiciatis consequatur ipsum odio placeat aperiam voluptatum fugit vitae velit tenetur a autem.
+                                    </div>
                                 </div>
-                                <table class="table is-fullwidth has-text-centered">
+                                <div class="columns">
+                                    <div class="column">
+                                        <h3 class="block subtitle is-6"><strong>Info Peli 2</strong></h3>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus temporibus sequi, quae laborum voluptates corrupti quibusdam incidunt perspiciatis consequatur ipsum odio placeat aperiam voluptatum fugit vitae velit tenetur a autem.
+                                    </div>
+                                </div>
+                                <!-- <table class="table is-fullwidth has-text-centered">
                                     <thead>
                                         <tr>
                                             <th><abbr title="Position">Ord</abbr></th>
@@ -418,7 +448,7 @@
                                             <th><a href="#" target="_blank">Movie</a></th>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
                             </div>
                         </div>
                     </div>
