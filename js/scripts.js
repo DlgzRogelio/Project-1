@@ -1,14 +1,7 @@
 
-imgUrl="https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg"
-actorName="Leonardo Di Caprio"
-resume="Leonardo Wilhelm DiCaprio1​ (Los Ángeles; 11 de noviembre de 1974)2​ es un actor, productor de cine y ambientalista estadounidense. Ha recibido numerosos premios entre los que destacan un Óscar al mejor actor; un premio BAFTA al mejor actor por su actuación en El renacido (2015); dos Globos de Oro al mejor actor de drama por sus actuaciones en El aviador (2004) y El renacido; y un Globo de Oro al mejor actor de comedia o musical por El lobo de Wall Street (2009). Adicionalmente, ha ganado el premio del Sindicato de Actores, el Oso de Plata y un Premio Chlotrudis.3​ Así como que, a partir de 2019, sus películas han recaudado unos 7’2 mil millones de dólares, y ha sido ocho veces ya considerado uno de los actores mejor pagados del mundo."
-movieTitle="Titanic"
-date="Fecha"
-movieResume="Titanic es una película estadounidense dramática de catástrofe de 1997 dirigida y escrita por James Cameron y protagonizada por Leonardo."
-ranking="1888.99"
-movieUrl="https://es.wikipedia.org/wiki/Titanic_(pel%C3%ADcula_de_1997)"
+var resume="Placeholder para datos de Api Duck Duck Go";
 
-function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, ranking, movieUrl){
+function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
 
     var separatorEl=$('<br>');
 
@@ -28,9 +21,9 @@ function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, r
 
     var figureEl = $('<figure>');
     figureEl.attr('class', 'image is-48x48');
-
+    
     var imageEl = $('<img>');
-    imageEl.attr('src', imgUrl);
+    imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
 
     var mediaContentEl = $('<div>');
     mediaContentEl.attr('class', 'media-content');
@@ -60,7 +53,12 @@ function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, r
     cardContentEl.append(contentEl);
     resultsEl.append(separatorEl);
 
-    for(var x=0;x<3;x++)
+
+    
+
+
+
+    for(var x=0;x<movieTitle.length;x++)
     {
 
         var boxEl=$('<div>');
@@ -70,15 +68,15 @@ function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, r
 
         var strongEl=$('<strong>');
         strongEl.attr('style','padding-right:5px');
-        strongEl.text(movieTitle);
+        strongEl.text(movieTitle[x].title);
 
         var smallEl=$('<small>');
-        smallEl.text(date);
+        smallEl.text(movieTitle[x].release_date);
 
-        var breakEl=$('<br>');
+        //var breakEl=$('<br>');
 
         var movieTextEl=$('<div>');
-        movieTextEl.text(movieResume);
+        movieTextEl.text(movieTitle[x].overview);
 
         var movieUrlEl=$('<a>');
         movieUrlEl.attr('href',movieUrl);
@@ -90,13 +88,8 @@ function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, r
         paragraphEl.append(smallEl);
         boxEl.append(movieTextEl);
         boxEl.append(movieUrlEl);
+   
     }
-
-}
-
-
-for(var x=0;x<3 ;x++){
-    deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, ranking, movieUrl);
 }
 
 // Retrieve INPUT data
@@ -104,6 +97,7 @@ let api_key = '94f0c60308f2a42f4c8a0265000556cd';
 let submit_button = document.getElementById( 'submit');
 
 function api_tmdb() {
+
 
     submit_button.addEventListener('click',function(event) {
         event.preventDefault();
@@ -132,9 +126,14 @@ function api_tmdb() {
                         link:link,
                         popularity:popularity
                     };
-                    console.log(new_array);
+                   
+                     deployActor(profile_path, name, resume, known_for, popularity, link);
+                        
+                    
+                    
                 }
             });
     });
 }
 api_tmdb();
+
