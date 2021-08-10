@@ -1,114 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Movie Mates</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="./css/styles.min.css">
-</head>
-<body>
-<!-- Menu container -->
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="column is-2">
-        <h1 class="title is-4">📽 Movie Mates</h1>
-    </div>
-
-
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item">About Us</a>
-            <a class="navbar-item">Donate</a>
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">More</a>
-                <div class="navbar-dropdown">
-                    <a class="navbar-item" href="https://www.bootcampspot.com/" target="_blank">Bootcamp</a>
-                    <a class="navbar-item">Jobs</a>
-                    <a class="navbar-item">Contact</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">Report an issue</a>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Movie Mates</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+            <link rel="stylesheet" href="./css/styles.min.css">
+        </head>
+        <body>
+            <!-- Menu container -->
+            <nav class="navbar" role="navigation" aria-label="main navigation">                
+                <div class="column is-2">
+                    <h1 class="title is-4">📽 Movie Mates</h1>
                 </div>
-            </div>
-        </div>
+                
 
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item">About Us</a>
+                        <a class="navbar-item">Donate</a>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">More</a>
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" href="https://www.bootcampspot.com/" target="_blank">Bootcamp</a>
+                                <a class="navbar-item">Jobs</a>
+                                <a class="navbar-item">Contact</a>
+                                <hr class="navbar-divider">
+                                <a class="navbar-item">Report an issue</a>
+                            </div>
+                        </div>
+                    </div>
 
-    </div>
-</nav>
+                    
+                </div>
+            </nav>
 
-<!-- Input/Output container -->
-<main>
+            <!-- Input/Output container -->
+            <main>
 
-    <section class="section">
-        <div class="container">
-            <!-- <h6 class="subtitle is-6"><strong>Example A</strong> Columns 12</h6> -->
-            <h1 class="title is-1">Movie Mates</h1>
-            <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
+                <section class="section">
+                    <div class="container">
+                        <!-- <h6 class="subtitle is-6"><strong>Example A</strong> Columns 12</h6> -->
+                        <h1 class="title is-1">Movie Mates</h1>
+                        <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
 
-            <!-- Columns is the parent wrapper style for columns -->
-            <div class="columns">
-                <!-- The "column is-12" sets the total width -->
-                <div class="column block">
-                    <label class="label">SEARCH FILTER(S)</label>
-                    <div class="field is-grouped">
-                        <div class="control has-icons-right is-expanded">
-                            <input id="name" class="input is-success" type="text" placeholder="Enter the name of the actress or actor" value="">
-                            <span class="icon is-right">
+                        <!-- Columns is the parent wrapper style for columns -->
+                        <div class="columns">
+                            <!-- The "column is-12" sets the total width -->
+                            <div class="column block">
+                                <label class="label">SEARCH FILTER(S)</label>
+                                <div class="field is-grouped">
+                                    <div class="control has-icons-right is-expanded">
+                                        <input id ="name"class="input is-success" type="text" placeholder="Enter the name of the actress or actor" value=""> 
+                                        <span class="icon is-right">
                                             <i class="fas fa-check fa-sm"></i>
                                           </span>
+                                    </div>                                    
+                                    <div class="control">
+                                        <a id="submit" type="submit" class="button is-info">Search</a>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-info">Surprise me</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div class="control">
-                            <a id="submit" type="submit" class="button is-info">Search</a>
-                        </div>
-                        <div class="control">
-                            <a class="button is-info">Surprise me</a>
+
+                        <!-- Columns is the parent wrapper style for columns -->
+                        <div class="container">
+
+                            <div class="columns">
+                                <!-- The "column is-12" sets the total width -->
+                                <div class="column block">
+                                    <h2 class="block subtitle is-6"><strong>Instructions</strong></h2>
+                                    <div class="column block">
+                                        <h2 class="block subtitle is-6">
+                                            Type the name of a movie artist, hit the Search button and you will get a list of the possible artists with matching names or hit the Surprise me button and you will go directly to information about movies and a small abstract.
+                                        </h2>
+    
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                </div>
-            </div>
+                    <div class="container">
+                        <h6 class="subtitle is-6"><strong>Example of the result's page</strong></h6>
+                        <h1 class="title is-1">Movie Mates</h1>
+                        <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
 
-            <!-- Columns is the parent wrapper style for columns -->
-            <div class="container">
+                        <div class="container" id="results">
 
-                <div class="columns">
-                    <!-- The "column is-12" sets the total width -->
-                    <div class="column block">
-                        <h2 class="block subtitle is-6"><strong>Instructions</strong></h2>
-                        <div class="column block">
-                            <h2 class="block subtitle is-6">
-                                Type the name of a movie artist, hit the Search button and you will get a list of the possible artists with matching names or hit the Surprise me button and you will go directly to information about movies and a small abstract.
-                            </h2>
-
+                            
                         </div>
-
-
                     </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>
+                        <strong>📽 Movie Mates</strong> by <a href="https://www.bootcampspot.com/" target="_blank">Red Team</a>. 
+                    </p>
                 </div>
-            </div>
-        </div>
+            </footer>
 
-        <div class="container">
-            <h6 class="subtitle is-6"><strong>Example of the result's page</strong></h6>
-            <h1 class="title is-1">Movie Mates</h1>
-            <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
-
-            <div class="container" id="results">
-
-
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            <strong>📽 Movie Mates</strong> by <a href="https://www.bootcampspot.com/" target="_blank">Red Team</a>.
-        </p>
-    </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./js/scripts.js"></script>
-</body>
-</html>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="./js/scripts.js"></script>
+        </body>
+    </html>
