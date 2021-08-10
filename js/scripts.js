@@ -27,7 +27,7 @@ function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, r
 
     var figureEl = $('<figure>');
     figureEl.attr('class', 'image is-48x48');
-
+    
     var imageEl = $('<img>');
     imageEl.attr('src', imgUrl);
 
