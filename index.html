@@ -1,441 +1,114 @@
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Hello Bulma!</title>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-            <link rel="stylesheet" href="./css/styles.min.css">
-        </head>
-        <body>
-            <!-- Menu container -->
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="https://bulma.io">
-                        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-                    </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Mates</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./css/styles.min.css">
+</head>
+<body>
+<!-- Menu container -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="column is-2">
+        <h1 class="title is-4">📽 Movie Mates</h1>
+    </div>
+
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">About Us</a>
+            <a class="navbar-item">Donate</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">More</a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://www.bootcampspot.com/" target="_blank">Bootcamp</a>
+                    <a class="navbar-item">Jobs</a>
+                    <a class="navbar-item">Contact</a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">Report an issue</a>
                 </div>
+            </div>
+        </div>
 
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-start">
-                        <a class="navbar-item">Home</a>
-                        <a class="navbar-item">Documentation</a>
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link">More</a>
-                            <div class="navbar-dropdown">
-                                <a class="navbar-item">About</a>
-                                <a class="navbar-item">Jobs</a>
-                                <a class="navbar-item">Contact</a>
-                                <hr class="navbar-divider">
-                                <a class="navbar-item">Report an issue</a>
-                            </div>
+
+    </div>
+</nav>
+
+<!-- Input/Output container -->
+<main>
+
+    <section class="section">
+        <div class="container">
+            <!-- <h6 class="subtitle is-6"><strong>Example A</strong> Columns 12</h6> -->
+            <h1 class="title is-1">Movie Mates</h1>
+            <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
+
+            <!-- Columns is the parent wrapper style for columns -->
+            <div class="columns">
+                <!-- The "column is-12" sets the total width -->
+                <div class="column block">
+                    <label class="label">SEARCH FILTER(S)</label>
+                    <div class="field is-grouped">
+                        <div class="control has-icons-right is-expanded">
+                            <input id="name" class="input is-success" type="text" placeholder="Enter the name of the actress or actor" value="">
+                            <span class="icon is-right">
+                                            <i class="fas fa-check fa-sm"></i>
+                                          </span>
+                        </div>
+                        <div class="control">
+                            <a id="submit" type="submit" class="button is-info">Search</a>
+                        </div>
+                        <div class="control">
+                            <a class="button is-info">Surprise me</a>
                         </div>
                     </div>
 
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                <a class="button is-primary">
-                                    <strong>Sign up</strong>
-                                </a>
-                                <a class="button is-light">Log in</a>
-                            </div>
+                </div>
+            </div>
+
+            <!-- Columns is the parent wrapper style for columns -->
+            <div class="container">
+
+                <div class="columns">
+                    <!-- The "column is-12" sets the total width -->
+                    <div class="column block">
+                        <h2 class="block subtitle is-6"><strong>Instructions</strong></h2>
+                        <div class="column block">
+                            <h2 class="block subtitle is-6">
+                                Type the name of a movie artist, hit the Search button and you will get a list of the possible artists with matching names or hit the Surprise me button and you will go directly to information about movies and a small abstract.
+                            </h2>
+
                         </div>
+
+
                     </div>
                 </div>
-            </nav>
+            </div>
+        </div>
 
-            <!-- Input/Output container -->
-            <main>
+        <div class="container">
+            <h6 class="subtitle is-6"><strong>Example of the result's page</strong></h6>
+            <h1 class="title is-1">Movie Mates</h1>
+            <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
 
-                <section class="section">
-                    <div class="container">
-                        <h6 class="subtitle is-6"><strong>EX.A</strong> Columns 12</h6>
-                        <h1 class="title is-1">FLIX FINDER</h1>
-                        <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
+            <div class="container" id="results">
 
-                        <!-- Columns is the parent wrapper style for columns -->
-                        <div class="columns">
-                            <!-- The "column is-12" sets the total width -->
-                            <div class="column block">
-                                <div class="field">
-                                    <label class="label">SEARCH FILTER(S)</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-success" type="text" placeholder="Enter the name the actress/actor, movie or genre..." value="">
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="control">
-                                        <label class="radio">
-                                            <input type="radio" name="foobar"> Year of release
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="foobar" checked> Ratings
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="foobar" checked> Comments
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Columns is the parent wrapper style for columns -->
-                        <div class="columns">
-                            <!-- The "column is-12" sets the total width -->
-                            <div class="column block">
-                                <h2 class="block subtitle is-6"><strong>RESULT(S)</strong></h2>
-                                <table class="table is-fullwidth has-text-centered">
-                                    <thead>
-                                    <tr>
-                                        <th><abbr title="Position">Ord</abbr></th>
-                                        <th><abbr title="Played">Name</abbr></th>
-                                        <th><abbr title="Won">Movie</abbr></th>
-                                        <th><abbr title="Drawn">Genre</abbr></th>
-                                        <th><abbr title="Lost">Year</abbr></th>
-                                        <th><abbr title="Goals for">Rating</abbr></th>
-                                        <th><abbr title="Goals against">Video</abbr></th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th><abbr title="Position">Ord</abbr></th>
-                                        <th><abbr title="Played">Name</abbr></th>
-                                        <th><abbr title="Won">Movie</abbr></th>
-                                        <th><abbr title="Drawn">Genre</abbr></th>
-                                        <th><abbr title="Lost">Year</abbr></th>
-                                        <th><abbr title="Goals for">Rating</abbr></th>
-                                        <th><abbr title="Goals against">Video</abbr></th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <tr>
-                                        <th>1</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>2</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>3</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>4</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>5</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>6</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>7</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>8</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>9</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    <tr>
-                                        <th>10</th>
-                                        <th><a href="#" target="_blank">Artist</a></th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th>Movie</th>
-                                        <th><a href="#" target="_blank">Movie</a></th>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="tags is-normal">
-                                    <span class="tag">Artist</span>
-                                    <span class="tag">Artist movies</span>
-                                    <span class="tag">Artist top-10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+    </section>
+</main>
 
-                    <div class="container">
-                        <h6 class="subtitle is-6"><strong>EX.B</strong> Columns 4 + 8</h6>
-                        <h1 class="title is-1">FLIX FINDER</h1>
-                        <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>📽 Movie Mates</strong> by <a href="https://www.bootcampspot.com/" target="_blank">Red Team</a>.
+        </p>
+    </div>
+</footer>
 
-                        <!-- Columns is the parent wrapper style for columns & Is Mobile triggers the breakpoint at 768px -->
-                        <div class="columns">
-
-                            <!-- The "column is-4" sets the number of columns for the left side -->
-                            <div class="column is-4 block is-desktop">
-                                <h2 class="subtitle is-6"><strong>SEARCH FILTER(S)</strong></h2>
-                                <div class="field">
-                                    <label class="label">CAST</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-success" type="text" placeholder="Enter the name the actress/actor" value="">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-user"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fas fa-check"></i>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="field">
-                                    <label class="label">FILM</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-success" type="text" placeholder="Enter the name of the film" value="">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-user"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fas fa-check"></i>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="field">
-                                    <label class="label">GENRE</label>
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-success" type="text" placeholder="Enter the type of genre" value="">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-user"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fas fa-check"></i>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="field">
-                                    <label class="label">Subject</label>
-                                    <div class="control">
-                                        <div class="select">
-                                            <select>
-                                                <option>Dropdown</option>
-                                                <option>Option #1</option>
-                                                <option>Option #2</option>
-                                                <option>Option #3</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="field">
-                                    <div class="control">
-                                        <label class="radio">
-                                            <input type="radio" name="foobar"> Year of release
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="foobar" checked> Ratings
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="foobar" checked> Comments
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="field is-grouped">
-                                    <div class="control">
-                                        <button class="button is-link">SEARCH</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- The "column is-8" sets the number of columns for the right side -->
-                            <div class="column is-8 block is-desktop">
-                                <h2 class="block subtitle is-6"><strong>RESULT(S)</strong></h2>
-                                <div class="tags is-normal">
-                                    <span class="tag">Artist</span>
-                                    <span class="tag">Artist movies</span>
-                                    <span class="tag">Artist top-10</span>
-                                </div>
-                                <table class="table is-fullwidth has-text-centered">
-                                    <thead>
-                                        <tr>
-                                            <th><abbr title="Position">Ord</abbr></th>
-                                            <th><abbr title="Played">Name</abbr></th>
-                                            <th><abbr title="Won">Movie</abbr></th>
-                                            <th><abbr title="Drawn">Genre</abbr></th>
-                                            <th><abbr title="Lost">Year</abbr></th>
-                                            <th><abbr title="Goals for">Rating</abbr></th>
-                                            <th><abbr title="Goals against">Video</abbr></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th><abbr title="Position">Ord</abbr></th>
-                                            <th><abbr title="Played">Name</abbr></th>
-                                            <th><abbr title="Won">Movie</abbr></th>
-                                            <th><abbr title="Drawn">Genre</abbr></th>
-                                            <th><abbr title="Lost">Year</abbr></th>
-                                            <th><abbr title="Goals for">Rating</abbr></th>
-                                            <th><abbr title="Goals against">Video</abbr></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>4</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>5</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>6</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>7</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>8</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>9</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                        <tr>
-                                            <th>10</th>
-                                            <th><a href="#" target="_blank">Artist</a></th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th>Movie</th>
-                                            <th><a href="#" target="_blank">Movie</a></th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <footer class="footer">t
-                <div class="content has-text-centered">
-                    <p>
-                        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-                        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-                    </p>
-                </div>
-            </footer>
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="./js/scripts.js"></script>
-        </body>
-    </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./js/scripts.js"></script>
+</body>
+</html>
