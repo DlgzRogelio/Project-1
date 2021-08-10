@@ -1,3 +1,4 @@
+
 imgUrl="https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg"
 actorName="Leonardo Di Caprio"
 resume="Leonardo Wilhelm DiCaprio1​ (Los Ángeles; 11 de noviembre de 1974)2​ es un actor, productor de cine y ambientalista estadounidense. Ha recibido numerosos premios entre los que destacan un Óscar al mejor actor; un premio BAFTA al mejor actor por su actuación en El renacido (2015); dos Globos de Oro al mejor actor de drama por sus actuaciones en El aviador (2004) y El renacido; y un Globo de Oro al mejor actor de comedia o musical por El lobo de Wall Street (2009). Adicionalmente, ha ganado el premio del Sindicato de Actores, el Oso de Plata y un Premio Chlotrudis.3​ Así como que, a partir de 2019, sus películas han recaudado unos 7’2 mil millones de dólares, y ha sido ocho veces ya considerado uno de los actores mejor pagados del mundo."
@@ -10,7 +11,7 @@ movieUrl="https://es.wikipedia.org/wiki/Titanic_(pel%C3%ADcula_de_1997)"
 function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, ranking, movieUrl){
 
     var separatorEl=$('<br>');
-    
+
     var resultsEl = $('#results');
 
     var cardEl = $('<div>');
@@ -64,7 +65,7 @@ function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, r
 
         var boxEl=$('<div>');
         boxEl.attr('class','box');
-        
+
         var paragraphEl=$('<p>');
 
         var strongEl=$('<strong>');
@@ -95,6 +96,48 @@ function deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, r
 
 
 for(var x=0;x<3 ;x++){
-
     deployActor(imgUrl, actorName, resume, movieTitle, date, movieResume, ranking, movieUrl);
 }
+
+// Retrieve INPUT data
+let api_key = '94f0c60308f2a42f4c8a0265000556cd';
+let submit_button = document.getElementById( 'submit');
+
+function api_tmdb() {
+
+    submit_button.addEventListener('click',function(event) {
+        event.preventDefault();
+
+        let input_actor = document.getElementById('name').value;
+        let request_movie = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + input_actor + '&page=1&include_adult=false';
+        console.log('Results related to: ' + input_actor.toUpperCase());
+
+        fetch(request_movie).then(function (response) {
+            return response.json();
+        })
+            .then(function(data) {
+                for (let artist in data.results) {
+                    let id = data.results[artist].id;
+                    let name = data.results[artist].name;
+                    let known_for = data.results[artist].known_for;
+                    let popularity = data.results[artist].popularity;
+                    let profile_path = data.results[artist].profile_path;
+                    let link = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + name.replace(/ /g, '%20') + '&page=1&include_adult=false';
+
+                    let new_array = {
+                        name:name,
+                        id:id,
+                        known_for:known_for,
+                        profile_path:profile_path,
+                        link:link,
+                        popularity:popularity
+                    };
+                    console.log(new_array);
+                }
+            });
+    });
+}
+api_tmdb();
+
+    
+
