@@ -95,6 +95,9 @@
     // Retrieve INPUT data
     let api_key = '94f0c60308f2a42f4c8a0265000556cd';
     let submit_button = document.getElementById( 'submit');
+    let callback = function(response) {
+        console.log(response);
+    };
 
     function api_tmdb() {
 
@@ -107,8 +110,7 @@
 
             fetch(request_movie).then(function (response) {
                 return response.json();
-            })
-            .then(function(data) {
+            }).then(function(data) {
                 for (let artist in data.results) {
                     let id = data.results[artist].id;
                     let name = data.results[artist].name;
@@ -117,6 +119,7 @@
                     let profile_path = data.results[artist].profile_path;
                     let link = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + name.replace(/ /g, '%20') + '&page=1&include_adult=false';
 
+                    // TheMovieDatabase
                     let new_array = {
                         name:name,
                         id:id,
@@ -126,27 +129,16 @@
                         popularity:popularity
                     };
 
+                    // DuckDuckGo
+                    let apiEndpoint = 'https://api.duckduckgo.com/';
+                    let params = 'q=' + new_array.name + '&format=json';
+                    let scriptTag = document.createElement('script');
+                    scriptTag.src = apiEndpoint + '?' + params + '&callback=callback';
+                    document.body.appendChild(scriptTag);
+
                     deployActor(profile_path, name, resume, known_for, popularity, link);
                 }
             });
         });
     }
     api_tmdb();
-
-    // Retrieve DATA from DuckDuckGo
-    function duck_api() {
-        let headers = new Headers();
-        let request_actor = 'Leonardo DiCaprio';
-        let request_url = 'https://api.duckduckgo.com/?q=' + request_actor + '&format=json&pretty=1';
-        headers.append('Access-Control-Allow-Origin', '*');
-        fetch(request_url, {
-            //mode: 'no-cors',
-            headers: headers
-        }).then(function (response){
-            console.log(response);
-            return response.json();
-        }).then(function(data) {
-            console.log(data);
-        });
-    }
-    duck_api();
