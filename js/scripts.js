@@ -133,6 +133,7 @@
     }
     api_tmdb();
 
+    // Retrieve DATA from DuckDuckGo
     function duck_api() {
         let headers = new Headers();
         let request_actor = 'Leonardo DiCaprio';
