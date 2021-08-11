@@ -1,114 +1,113 @@
 
-var resume="Placeholder para datos de Api Duck Duck Go";
+    var resume="Placeholder para datos de Api Duck Duck Go";
 
-function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
+    function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
 
-    var separatorEl=$('<br>');
+        var separatorEl=$('<br>');
 
-    var resultsEl = $('#results');
+        var resultsEl = $('#results');
 
-    var cardEl = $('<div>');
-    cardEl.attr('class', 'card');
+        var cardEl = $('<div>');
+        cardEl.attr('class', 'card');
 
-    var cardContentEl = $('<div>');
-    cardContentEl.attr('class', 'card-content');
+        var cardContentEl = $('<div>');
+        cardContentEl.attr('class', 'card-content');
 
-    var mediaEl = $('<div>');
-    mediaEl.attr('class', 'media');
+        var mediaEl = $('<div>');
+        mediaEl.attr('class', 'media');
 
-    var mediaLeftEl = $('<div>');
-    mediaLeftEl.attr('class', 'media-left');
+        var mediaLeftEl = $('<div>');
+        mediaLeftEl.attr('class', 'media-left');
 
-    var figureEl = $('<figure>');
-    figureEl.attr('class', 'image is-48x48');
-    
-    var imageEl = $('<img>');
-    imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
+        var figureEl = $('<figure>');
+        figureEl.attr('class', 'image is-48x48');
 
-    var mediaContentEl = $('<div>');
-    mediaContentEl.attr('class', 'media-content');
+        var imageEl = $('<img>');
+        imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
 
-    var titleEl = $('<p>');
-    titleEl.attr('class', 'title is-4');
-    titleEl.text(actorName);
+        var mediaContentEl = $('<div>');
+        mediaContentEl.attr('class', 'media-content');
 
-    var subtitleEl=$('<p>');
-    subtitleEl.attr('class', 'subtitle is-6');
-    subtitleEl.text("Popularity: "+ranking);
+        var titleEl = $('<p>');
+        titleEl.attr('class', 'title is-4');
+        titleEl.text(actorName);
 
-
-    var contentEl = $('<p>');
-    contentEl.attr('class', 'content');
-    contentEl.text(resume);
-
-    resultsEl.append(cardEl);
-    cardEl.append(cardContentEl);
-    cardContentEl.append(mediaEl);
-    mediaEl.append(mediaLeftEl);
-    mediaLeftEl.append(figureEl);
-    figureEl.append(imageEl);
-    mediaEl.append(mediaContentEl);
-    mediaContentEl.append(titleEl);
-    mediaContentEl.append(subtitleEl);
-    cardContentEl.append(contentEl);
-    resultsEl.append(separatorEl);
+        var subtitleEl=$('<p>');
+        subtitleEl.attr('class', 'subtitle is-6');
+        subtitleEl.text("Popularity: "+ranking);
 
 
-    
+        var contentEl = $('<p>');
+        contentEl.attr('class', 'content');
+        contentEl.text(resume);
+
+        resultsEl.append(cardEl);
+        cardEl.append(cardContentEl);
+        cardContentEl.append(mediaEl);
+        mediaEl.append(mediaLeftEl);
+        mediaLeftEl.append(figureEl);
+        figureEl.append(imageEl);
+        mediaEl.append(mediaContentEl);
+        mediaContentEl.append(titleEl);
+        mediaContentEl.append(subtitleEl);
+        cardContentEl.append(contentEl);
+        resultsEl.append(separatorEl);
 
 
 
-    for(var x=0;x<movieTitle.length;x++)
-    {
 
-        var boxEl=$('<div>');
-        boxEl.attr('class','box');
 
-        var paragraphEl=$('<p>');
 
-        var strongEl=$('<strong>');
-        strongEl.attr('style','padding-right:5px');
-        strongEl.text(movieTitle[x].title);
+        for(var x=0;x<movieTitle.length;x++)
+        {
 
-        var smallEl=$('<small>');
-        smallEl.text(movieTitle[x].release_date);
+            var boxEl=$('<div>');
+            boxEl.attr('class','box');
 
-        //var breakEl=$('<br>');
+            var paragraphEl=$('<p>');
 
-        var movieTextEl=$('<div>');
-        movieTextEl.text(movieTitle[x].overview);
+            var strongEl=$('<strong>');
+            strongEl.attr('style','padding-right:5px');
+            strongEl.text(movieTitle[x].title);
 
-        var movieUrlEl=$('<a>');
-        movieUrlEl.attr('href',movieUrl);
-        movieUrlEl.text(movieUrl);
+            var smallEl=$('<small>');
+            smallEl.text(movieTitle[x].release_date);
 
-        cardContentEl.append(boxEl);
-        boxEl.append(paragraphEl);
-        paragraphEl.append(strongEl);
-        paragraphEl.append(smallEl);
-        boxEl.append(movieTextEl);
-        boxEl.append(movieUrlEl);
-   
+            //var breakEl=$('<br>');
+
+            var movieTextEl=$('<div>');
+            movieTextEl.text(movieTitle[x].overview);
+
+            var movieUrlEl=$('<a>');
+            movieUrlEl.attr('href',movieUrl);
+            movieUrlEl.text(movieUrl);
+
+            cardContentEl.append(boxEl);
+            boxEl.append(paragraphEl);
+            paragraphEl.append(strongEl);
+            paragraphEl.append(smallEl);
+            boxEl.append(movieTextEl);
+            boxEl.append(movieUrlEl);
+
+        }
     }
-}
 
-// Retrieve INPUT data
-let api_key = '94f0c60308f2a42f4c8a0265000556cd';
-let submit_button = document.getElementById( 'submit');
+    // Retrieve INPUT data
+    let api_key = '94f0c60308f2a42f4c8a0265000556cd';
+    let submit_button = document.getElementById( 'submit');
 
-function api_tmdb() {
+    function api_tmdb() {
 
+        submit_button.addEventListener('click',function(event) {
+            event.preventDefault();
 
-    submit_button.addEventListener('click',function(event) {
-        event.preventDefault();
+            let input_actor = document.getElementById('name').value;
+            let request_movie = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + input_actor + '&page=1&include_adult=false';
+            document.getElementById('instructions').style.display = 'none';
 
-        let input_actor = document.getElementById('name').value;
-        let request_movie = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + input_actor + '&page=1&include_adult=false';
-        console.log('Results related to: ' + input_actor.toUpperCase());
-
-        fetch(request_movie).then(function (response) {
-            return response.json();
-        })
+            fetch(request_movie).then(function (response) {
+                return response.json();
+            })
             .then(function(data) {
                 for (let artist in data.results) {
                     let id = data.results[artist].id;
@@ -126,14 +125,27 @@ function api_tmdb() {
                         link:link,
                         popularity:popularity
                     };
-                   
-                     deployActor(profile_path, name, resume, known_for, popularity, link);
-                        
-                    
-                    
+
+                    deployActor(profile_path, name, resume, known_for, popularity, link);
                 }
             });
-    });
-}
-api_tmdb();
+        });
+    }
+    api_tmdb();
 
+    function duck_api() {
+        let headers = new Headers();
+        let request_actor = 'Leonardo DiCaprio';
+        let request_url = 'https://api.duckduckgo.com/?q=' + request_actor + '&format=json&pretty=1';
+        headers.append('Access-Control-Allow-Origin', '*');
+        fetch(request_url, {
+            //mode: 'no-cors',
+            headers: headers
+        }).then(function (response){
+            console.log(response);
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+        });
+    }
+    duck_api();
