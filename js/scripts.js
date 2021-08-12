@@ -131,7 +131,7 @@ function api_tmdb() {
 
 //////////////////
 
-
+                    console.log(new_array);
                     //Declarations for WIKI
                     var apiEndpoint = "https://en.wikipedia.org/w/api.php";
                     var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+name;
