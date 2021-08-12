@@ -129,17 +129,6 @@ function api_tmdb() {
                         popularity:popularity
                     };
 
-
-
-
-
-
-
-
-
-
-
-
 //////////////////
 
 
@@ -170,6 +159,3 @@ function api_tmdb() {
 
 
 api_tmdb();
-
-
-
