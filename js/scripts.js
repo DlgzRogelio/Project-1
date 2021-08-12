@@ -1,6 +1,4 @@
 
-var resume="Placeholder para datos de Api Duck Duck Go";
-
 function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
 
     var separatorEl=$('<br>');
@@ -21,7 +19,7 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
 
     var figureEl = $('<figure>');
     figureEl.attr('class', 'image is-48x48');
-    
+
     var imageEl = $('<img>');
     imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
 
@@ -39,7 +37,7 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
 
     var contentEl = $('<p>');
     contentEl.attr('class', 'content');
-    contentEl.text(resume);
+    contentEl.append(resume);
 
     resultsEl.append(cardEl);
     cardEl.append(cardContentEl);
@@ -52,9 +50,6 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     mediaContentEl.append(subtitleEl);
     cardContentEl.append(contentEl);
     resultsEl.append(separatorEl);
-
-
-    
 
 
 
@@ -88,13 +83,15 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         paragraphEl.append(smallEl);
         boxEl.append(movieTextEl);
         boxEl.append(movieUrlEl);
-   
+
     }
 }
 
 // Retrieve INPUT data
+
 let api_key = '94f0c60308f2a42f4c8a0265000556cd';
 let submit_button = document.getElementById( 'submit');
+var wikiAbstract;
 
 function api_tmdb() {
 
@@ -116,6 +113,11 @@ function api_tmdb() {
                     let known_for = data.results[artist].known_for;
                     let popularity = data.results[artist].popularity;
                     let profile_path = data.results[artist].profile_path;
+                    
+
+//////////////////////////
+
+
                     let link = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + name.replace(/ /g, '%20') + '&page=1&include_adult=false';
 
                     let new_array = {
@@ -126,14 +128,48 @@ function api_tmdb() {
                         link:link,
                         popularity:popularity
                     };
-                   
-                     deployActor(profile_path, name, resume, known_for, popularity, link);
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////
+
+
+                    //Declarations for WIKI
+                    var apiEndpoint = "https://en.wikipedia.org/w/api.php";
+                    var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+name;
+
+    
+                    fetch(apiEndpoint + "?" + params).then(function (response){
+                        return response.json();
+                    }).then(function(data) {
                         
-                    
-                    
+                        var result=Object.keys(data.query.pages)[0];
+                        
+                        wikiAbstract=data.query.pages[result].extract;
+
+                        deployActor(profile_path, name, wikiAbstract, known_for, popularity, link);
+
+            
+                    });
+
+///////////////////////
                 }
             });
     });
 }
+
+
+
 api_tmdb();
+
+
 
