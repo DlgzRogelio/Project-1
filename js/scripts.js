@@ -21,7 +21,11 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     figureEl.attr('class', 'image is-48x48');
 
     var imageEl = $('<img>');
-    imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
+    if (imgUrl!= null){
+        imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
+    } else {
+        imageEl.attr('src', 'https://via.placeholder.com/468x460?text=Come+Frutas+y+Verduras');    
+    }
 
     var mediaContentEl = $('<div>');
     mediaContentEl.attr('class', 'media-content');
