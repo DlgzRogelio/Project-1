@@ -1,4 +1,3 @@
-
 function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
 
     var separatorEl=$('<br>');
@@ -21,7 +20,11 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     figureEl.attr('class', 'image is-48x48');
 
     var imageEl = $('<img>');
-    imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
+    if (imgUrl!= null){
+        imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
+    } else {
+        imageEl.attr('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYwxeqpgo12TSQXpuTsVhjJ78So8JBSvnlasVnWbNpEKnI787YVl6UetETTCeE_atWqI0&usqp=CAU');
+    }
 
     var mediaContentEl = $('<div>');
     mediaContentEl.attr('class', 'media-content');
