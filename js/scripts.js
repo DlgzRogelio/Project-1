@@ -24,7 +24,7 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     if (imgUrl!= null){
         imageEl.attr('src', "https://image.tmdb.org/t/p/w500"+imgUrl);
     } else {
-        imageEl.attr('src', 'https://via.placeholder.com/468x460?text=Come+Frutas+y+Verduras');    
+        imageEl.attr('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYwxeqpgo12TSQXpuTsVhjJ78So8JBSvnlasVnWbNpEKnI787YVl6UetETTCeE_atWqI0&usqp=CAU');    
     }
 
     var mediaContentEl = $('<div>');
