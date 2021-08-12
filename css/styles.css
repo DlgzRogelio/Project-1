@@ -9,6 +9,17 @@ body .container {
   margin: 0 auto 30px;
   padding: 40px;
 }
+body .container form {
+  display: flex;
+  justify-content: space-between;
+}
+body .container form #name {
+  width: 88%;
+}
+body .container form #submit {
+  width: 10%;
+  min-width: 80px;
+}
 body .footer {
   background: #525252;
 }

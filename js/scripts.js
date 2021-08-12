@@ -147,9 +147,12 @@ function api_tmdb() {
             document.body.children[1].children[0].children[1].style.display = 'block';
         });
     });
-
-    reset_button.addEventListener('click',function(event) {
-        document.getElementById("results").reset();
-    });
 }
 api_tmdb();
+
+function clear_results() {
+    submit_button.addEventListener('click', function(){
+        document.getElementById("results").innerHTML = "";
+    })
+}
+clear_results();
