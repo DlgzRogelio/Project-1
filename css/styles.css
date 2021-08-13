@@ -197,6 +197,9 @@ body .footer p a {
     width: 100%;
     margin: 20px 0 0;
   }
+  body main section #module_results .card {
+    padding: 0;
+  }
   body main section #module_results .card .box a {
     font-size: 0.8em;
   }
