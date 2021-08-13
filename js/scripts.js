@@ -154,3 +154,19 @@ function clear_results() {
     });
 }
 clear_results();
+
+
+
+//Routine to display modal
+
+$("#modalTeam").click(function() {
+    console.log("entra");
+   var target = $(this).data("target");
+   $("html").addClass("is-clipped");
+   $(target).addClass("is-active");
+});
+
+$(".modal-close").click(function() {
+   $("html").removeClass("is-clipped");
+   $(this).parent().removeClass("is-active");
+});
