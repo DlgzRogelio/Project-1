@@ -73,14 +73,15 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         movieTextEl.text(movieTitle[x].overview);
 
         var movieUrlEl=$('<a>');
-        movieUrlEl.attr('href',movieUrl);
-        movieUrlEl.text(movieUrl);
+        movieUrlEl.attr('href',movieUrl+movieTitle[x].title);
+        movieUrlEl.text(movieUrl+movieTitle[x].title);
 
         cardContentEl.append(boxEl);
         boxEl.append(paragraphEl);
         paragraphEl.append(strongEl);
         paragraphEl.append(smallEl);
         boxEl.append(movieTextEl);
+        boxEl.append("<br>");
         boxEl.append(movieUrlEl);
     }
 }
@@ -101,46 +102,26 @@ function api_tmdb() {
 
         fetch(request_movie).then(function (response) {
             return response.json();
-        }).then(function(data) {
+        }).then(async function(data) {
 
-            for (let artist in data.results) {
-                let id = data.results[artist].id;
-                let name = data.results[artist].name;
-                let popularity = data.results[artist].popularity;
-                let profile_path = data.results[artist].profile_path;
-                let known_for = data.results[artist].known_for;
-                let video_id = data.results[artist].known_for[0].id;
-                let movie = data.results[artist].known_for[0].title;
-                let url_movie = "https://www.themoviedb.org/movie/" + video_id + "-" + movie;
-                //console.log("SHOW ME!!!!!" + url_movie);
-                //let tv = data.results[artist].known_for[artist_movies].name;
-                //let url_tv = "https://www.themoviedb.org/movie/" + video_id + "-" + tv;
-                //console.log("SHOW ME!!!!!" + url_tv);
+            console.log(data.results);
+            //Declarations for WIKI
+            var apiEndpoint = "https://en.wikipedia.org/w/api.php";
 
-                let link = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + name.replace(/ /g, '%20') + '&page=1&include_adult=false';
-                let new_array = {
-                    name:name,
-                    id:id,
-                    known_for:known_for,
-                    profile_path:profile_path,
-                    link:link,
-                    popularity:popularity
-                };
-                console.log(new_array);
+            for (let index = 0; index < data.results.length; index++) {
 
-                //Declarations for WIKI
-                var apiEndpoint = "https://en.wikipedia.org/w/api.php";
-                var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+name;
+                let link = 'https://www.themoviedb.org/search?language=es&query=';
+                var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+data.results[index].name;
 
-                fetch(apiEndpoint + "?" + params).then(function (response){
+                await fetch(apiEndpoint + "?" + params).then(function (response){
                     return response.json();
-                }).then(function(data) {
-                    var result=Object.keys(data.query.pages)[0];
-                    wikiAbstract=data.query.pages[result].extract;
-                    deployActor(profile_path, name, wikiAbstract, known_for, popularity, url_movie);
+                }).then(function(data2) {
+                    var result=Object.keys(data2.query.pages)[0];
+                    wikiAbstract=data2.query.pages[result].extract;
+                    deployActor(data.results[index].profile_path, data.results[index].name, wikiAbstract, data.results[index].known_for, data.results[index].popularity, link);
                 });
             }
-            document.body.children[1].children[0].children[1].style.display = 'block';
+
             document.body.children[1].children[0].children[1].style.display = 'block';
             document.body.children[1].style.padding = '5em 0 0';
         });
@@ -155,19 +136,16 @@ function clear_results() {
 }
 clear_results();
 
-
-
 //Routine to display modal
 
 $("#modalTeam").click(function() {
     console.log("entra");
-   var target = $(this).data("target");
-   $("html").addClass("is-clipped");
-   $(target).addClass("is-active");
+    var target = $(this).data("target");
+    $("html").addClass("is-clipped");
+    $(target).addClass("is-active");
 });
 
 $(".modal-close").click(function() {
-   $("html").removeClass("is-clipped");
-   $(this).parent().removeClass("is-active");
+    $("html").removeClass("is-clipped");
+    $(this).parent().removeClass("is-active");
 });
-
