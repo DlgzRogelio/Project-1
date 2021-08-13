@@ -6,6 +6,9 @@
             <title>Movie Mates</title>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
             <link rel="stylesheet" href="./css/styles.min.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono&display=swap" rel="stylesheet">
         </head>
         <body>
 
@@ -18,20 +21,17 @@
 
                 <div id="navbarBasicExample" class="navbar-menu">
                     <div class="navbar-start">
-                        <a class="navbar-item" href="aboutUs.html">About Us</a>
-                        <a class="navbar-item" href="https://www.gofundme.com/" target="_blank">Donate</a>
+                        <a class="navbar-item" href="aboutUs.html">Repository</a>
                         <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link">More</a>
+                            <a class="navbar-link">About Us</a>
                             <div class="navbar-dropdown">
-                                <a class="navbar-item" href="https://www.bootcampspot.com/" target="_blank">Bootcamp</a>
-                                <a class="navbar-item" href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank">Jobs</a>
-                                <a class="navbar-item" href="contact.html">Contact</a>
-                                <!-- <hr class="navbar-divider">
-                                <a class="navbar-item">Report an issue</a> -->
+                                <a class="navbar-item" href="https://www.bootcampspot.com/" target="_blank">Luis</a>
+                                <a class="navbar-item" href="https://en.wikipedia.org/wiki/Steve_Jobs" target="_blank">José Rogelio</a>
+                                <a class="navbar-item" href="contact.html">Carlos</a>
+                                <a class="navbar-item" href="contact.html">Ian</a>
                             </div>
                         </div>
                     </div>
-
                     
                 </div>
             </nav>
@@ -40,7 +40,7 @@
             <main>
                 <section class="section">
 
-                    <div class="container">
+                    <div id="module_search" class="container">
                         <h1 class="title is-1">Movie Mates</h1>
                         <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
                         <!-- Block: Search -->
@@ -65,13 +65,11 @@
                         </div>
                     </div>
 
-                    <div class="container">
-                            <h6 class="subtitle is-6"><strong>Example of the result's page</strong></h6>
-                            <h1 class="title is-1">Movie Mates</h1>
-                            <p class="subtitle is-4">Search and get recommendations about <strong>movies</strong>, <strong>artists</strong> and <strong>genres</strong>!</p>
-                            <form id="myForm">
-                                <div class="container" id="results"></div>
-                            </form>
+                    <div id="module_results" class="container">
+                        <h6 class="subtitle is-6"><strong>Example of the result's page</strong></h6>
+                        <form id="myForm">
+                            <div class="container" id="results"></div>
+                        </form>
                     </div>
                 </section>
             </main>

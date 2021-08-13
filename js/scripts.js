@@ -37,7 +37,6 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     subtitleEl.attr('class', 'subtitle is-6');
     subtitleEl.text("Popularity: "+ranking);
 
-
     var contentEl = $('<p>');
     contentEl.attr('class', 'content');
     contentEl.append(resume);
@@ -54,10 +53,7 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     cardContentEl.append(contentEl);
     resultsEl.append(separatorEl);
 
-
-
-    for(var x=0;x<movieTitle.length;x++)
-    {
+    for(var x=0;x<movieTitle.length;x++) {
 
         var boxEl=$('<div>');
         boxEl.attr('class','box');
@@ -86,19 +82,15 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         paragraphEl.append(smallEl);
         boxEl.append(movieTextEl);
         boxEl.append(movieUrlEl);
-
     }
 }
 
 // Retrieve INPUT data
-
 let api_key = '94f0c60308f2a42f4c8a0265000556cd';
 let submit_button = document.getElementById( 'submit');
-let reset_button = document.getElementById( 'reset');
 var wikiAbstract;
 
 document.body.children[1].children[0].children[1].style.display = 'none';
-
 
 function api_tmdb() {
     submit_button.addEventListener('click',function(event) {
@@ -114,13 +106,18 @@ function api_tmdb() {
             for (let artist in data.results) {
                 let id = data.results[artist].id;
                 let name = data.results[artist].name;
-                let known_for = data.results[artist].known_for;
                 let popularity = data.results[artist].popularity;
                 let profile_path = data.results[artist].profile_path;
+                let known_for = data.results[artist].known_for;
+                let video_id = data.results[artist].known_for[0].id;
+                let movie = data.results[artist].known_for[0].title;
+                let url_movie = "https://www.themoviedb.org/movie/" + video_id + "-" + movie;
+                //console.log("SHOW ME!!!!!" + url_movie);
+                //let tv = data.results[artist].known_for[artist_movies].name;
+                //let url_tv = "https://www.themoviedb.org/movie/" + video_id + "-" + tv;
+                //console.log("SHOW ME!!!!!" + url_tv);
 
                 let link = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + name.replace(/ /g, '%20') + '&page=1&include_adult=false';
-                console.log(link)
-
                 let new_array = {
                     name:name,
                     id:id,
@@ -140,11 +137,12 @@ function api_tmdb() {
                 }).then(function(data) {
                     var result=Object.keys(data.query.pages)[0];
                     wikiAbstract=data.query.pages[result].extract;
-                    deployActor(profile_path, name, wikiAbstract, known_for, popularity, link);
+                    deployActor(profile_path, name, wikiAbstract, known_for, popularity, url_movie);
                 });
             }
-
             document.body.children[1].children[0].children[1].style.display = 'block';
+            document.body.children[1].children[0].children[1].style.display = 'block';
+            document.body.children[1].style.padding = '5em 0 0';
         });
     });
 }
@@ -153,6 +151,6 @@ api_tmdb();
 function clear_results() {
     submit_button.addEventListener('click', function(){
         document.getElementById("results").innerHTML = "";
-    })
+    });
 }
 clear_results();
