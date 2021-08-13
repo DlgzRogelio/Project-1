@@ -73,14 +73,15 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         movieTextEl.text(movieTitle[x].overview);
 
         var movieUrlEl=$('<a>');
-        movieUrlEl.attr('href',movieUrl);
-        movieUrlEl.text(movieUrl);
+        movieUrlEl.attr('href',movieUrl+movieTitle[x].title);
+        movieUrlEl.text(movieUrl+movieTitle[x].title);
 
         cardContentEl.append(boxEl);
         boxEl.append(paragraphEl);
         paragraphEl.append(strongEl);
         paragraphEl.append(smallEl);
         boxEl.append(movieTextEl);
+        boxEl.append("<br>");
         boxEl.append(movieUrlEl);
     }
 }
@@ -92,15 +93,20 @@ var wikiAbstract;
 
 document.body.children[1].children[0].children[1].style.display = 'none';
 
+
 function api_tmdb() {
+=======
+
+
     submit_button.addEventListener('click',function(event) {
         event.preventDefault();
 
         let input_actor = document.getElementById('name').value;
         let request_movie = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + input_actor + '&page=1&include_adult=false';
 
-        fetch(request_movie).then(function (response) {
+         fetch(request_movie).then(function (response) {
             return response.json();
+
         }).then(function(data) {
 
             for (let artist in data.results) {
@@ -127,9 +133,14 @@ function api_tmdb() {
                     popularity:popularity
                 };
                 console.log(new_array);
+=======
+     
 
+            
+                console.log(data.results);
                 //Declarations for WIKI
                 var apiEndpoint = "https://en.wikipedia.org/w/api.php";
+
                 var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+name;
 
                 fetch(apiEndpoint + "?" + params).then(function (response){
@@ -140,6 +151,12 @@ function api_tmdb() {
                     deployActor(profile_path, name, wikiAbstract, known_for, popularity, url_movie);
                 });
             }
+=======
+                
+              
+                
+
+
             document.body.children[1].children[0].children[1].style.display = 'block';
             document.body.children[1].children[0].children[1].style.display = 'block';
             document.body.children[1].style.padding = '5em 0 0';
