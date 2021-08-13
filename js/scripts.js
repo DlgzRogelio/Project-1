@@ -37,7 +37,6 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     subtitleEl.attr('class', 'subtitle is-6');
     subtitleEl.text("Popularity: "+ranking);
 
-
     var contentEl = $('<p>');
     contentEl.attr('class', 'content');
     contentEl.append(resume);
@@ -54,10 +53,7 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
     cardContentEl.append(contentEl);
     resultsEl.append(separatorEl);
 
-
-
-    for(var x=0;x<movieTitle.length;x++)
-    {
+    for(var x=0;x<movieTitle.length;x++) {
 
         var boxEl=$('<div>');
         boxEl.attr('class','box');
@@ -87,57 +83,48 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         boxEl.append(movieTextEl);
         boxEl.append("<br>");
         boxEl.append(movieUrlEl);
-
     }
 }
 
 // Retrieve INPUT data
-
 let api_key = '94f0c60308f2a42f4c8a0265000556cd';
 let submit_button = document.getElementById( 'submit');
-let reset_button = document.getElementById( 'reset');
 var wikiAbstract;
 
 document.body.children[1].children[0].children[1].style.display = 'none';
 
-
- function api_tmdb() {
+function api_tmdb() {
     submit_button.addEventListener('click',function(event) {
         event.preventDefault();
 
         let input_actor = document.getElementById('name').value;
         let request_movie = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + input_actor + '&page=1&include_adult=false';
 
-         fetch(request_movie).then(function (response) {
+        fetch(request_movie).then(function (response) {
             return response.json();
         }).then(async function(data) {
-
             
-                console.log(data.results);
-                //Declarations for WIKI
-                var apiEndpoint = "https://en.wikipedia.org/w/api.php";
-                
-              
-                for (let index = 0; index < data.results.length; index++) {
-                    
-                    let link = 'https://www.themoviedb.org/search?language=es&query=';
-                    var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+data.results[index].name;
-                    // console.log(apiEndpoint + "?" + params);
-                
-                    
-                    await fetch(apiEndpoint + "?" + params).then(function (response){
-                        return response.json();
-                    }).then(function(data2) {
-                        // console.log(data2);
-                        var result=Object.keys(data2.query.pages)[0];
-                        wikiAbstract=data2.query.pages[result].extract;
-                        deployActor(data.results[index].profile_path, data.results[index].name, wikiAbstract, data.results[index].known_for, data.results[index].popularity, link);
-                    });
+            console.log(data.results);
+            //Declarations for WIKI
+            var apiEndpoint = "https://en.wikipedia.org/w/api.php";
 
-                }   
-            // }
+            for (let index = 0; index < data.results.length; index++) {
+
+                let link = 'https://www.themoviedb.org/search?language=es&query=';
+                var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+data.results[index].name;
+
+                await fetch(apiEndpoint + "?" + params).then(function (response){
+                    return response.json();
+                }).then(function(data2) {
+                    var result=Object.keys(data2.query.pages)[0];
+                    wikiAbstract=data2.query.pages[result].extract;
+                    deployActor(data.results[index].profile_path, data.results[index].name, wikiAbstract, data.results[index].known_for, data.results[index].popularity, link);
+                });
+
+            }
 
             document.body.children[1].children[0].children[1].style.display = 'block';
+            document.body.children[1].style.padding = '5em 0 0';
         });
     });
 }
@@ -146,22 +133,20 @@ api_tmdb();
 function clear_results() {
     submit_button.addEventListener('click', function(){
         document.getElementById("results").innerHTML = "";
-    })
+    });
 }
 clear_results();
-
-
 
 //Routine to display modal
 
 $("#modalTeam").click(function() {
     console.log("entra");
-   var target = $(this).data("target");
-   $("html").addClass("is-clipped");
-   $(target).addClass("is-active");
+    var target = $(this).data("target");
+    $("html").addClass("is-clipped");
+    $(target).addClass("is-active");
 });
 
 $(".modal-close").click(function() {
-   $("html").removeClass("is-clipped");
-   $(this).parent().removeClass("is-active");
+    $("html").removeClass("is-clipped");
+    $(this).parent().removeClass("is-active");
 });
