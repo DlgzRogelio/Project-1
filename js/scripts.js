@@ -103,7 +103,7 @@ function api_tmdb() {
         fetch(request_movie).then(function (response) {
             return response.json();
         }).then(async function(data) {
-
+            
             console.log(data.results);
             //Declarations for WIKI
             var apiEndpoint = "https://en.wikipedia.org/w/api.php";
@@ -120,6 +120,7 @@ function api_tmdb() {
                     wikiAbstract=data2.query.pages[result].extract;
                     deployActor(data.results[index].profile_path, data.results[index].name, wikiAbstract, data.results[index].known_for, data.results[index].popularity, link);
                 });
+
             }
 
             document.body.children[1].children[0].children[1].style.display = 'block';
