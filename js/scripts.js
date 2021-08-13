@@ -77,14 +77,15 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         movieTextEl.text(movieTitle[x].overview);
 
         var movieUrlEl=$('<a>');
-        movieUrlEl.attr('href',movieUrl);
-        movieUrlEl.text(movieUrl);
+        movieUrlEl.attr('href',movieUrl+movieTitle[x].title);
+        movieUrlEl.text(movieUrl+movieTitle[x].title);
 
         cardContentEl.append(boxEl);
         boxEl.append(paragraphEl);
         paragraphEl.append(strongEl);
         paragraphEl.append(smallEl);
         boxEl.append(movieTextEl);
+        boxEl.append("<br>");
         boxEl.append(movieUrlEl);
 
     }
@@ -100,49 +101,41 @@ var wikiAbstract;
 document.body.children[1].children[0].children[1].style.display = 'none';
 
 
-function api_tmdb() {
+ function api_tmdb() {
     submit_button.addEventListener('click',function(event) {
         event.preventDefault();
 
         let input_actor = document.getElementById('name').value;
         let request_movie = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + input_actor + '&page=1&include_adult=false';
 
-        fetch(request_movie).then(function (response) {
+         fetch(request_movie).then(function (response) {
             return response.json();
-        }).then(function(data) {
+        }).then(async function(data) {
 
-            for (let artist in data.results) {
-                let id = data.results[artist].id;
-                let name = data.results[artist].name;
-                let known_for = data.results[artist].known_for;
-                let popularity = data.results[artist].popularity;
-                let profile_path = data.results[artist].profile_path;
-
-                let link = 'https://api.themoviedb.org/3/search/person?api_key=' + api_key + '&language=en-US&query=' + name.replace(/ /g, '%20') + '&page=1&include_adult=false';
-                console.log(link)
-
-                let new_array = {
-                    name:name,
-                    id:id,
-                    known_for:known_for,
-                    profile_path:profile_path,
-                    link:link,
-                    popularity:popularity
-                };
-                console.log(new_array);
-
+            
+                console.log(data.results);
                 //Declarations for WIKI
                 var apiEndpoint = "https://en.wikipedia.org/w/api.php";
-                var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+name;
+                
+              
+                for (let index = 0; index < data.results.length; index++) {
+                    
+                    let link = 'https://www.themoviedb.org/search?language=es&query=';
+                    var params ="action=query&prop=extracts&format=json&origin=*&exsentences=3&exlimit=1&titles="+data.results[index].name;
+                    // console.log(apiEndpoint + "?" + params);
+                
+                    
+                    await fetch(apiEndpoint + "?" + params).then(function (response){
+                        return response.json();
+                    }).then(function(data2) {
+                        // console.log(data2);
+                        var result=Object.keys(data2.query.pages)[0];
+                        wikiAbstract=data2.query.pages[result].extract;
+                        deployActor(data.results[index].profile_path, data.results[index].name, wikiAbstract, data.results[index].known_for, data.results[index].popularity, link);
+                    });
 
-                fetch(apiEndpoint + "?" + params).then(function (response){
-                    return response.json();
-                }).then(function(data) {
-                    var result=Object.keys(data.query.pages)[0];
-                    wikiAbstract=data.query.pages[result].extract;
-                    deployActor(profile_path, name, wikiAbstract, known_for, popularity, link);
-                });
-            }
+                }   
+            // }
 
             document.body.children[1].children[0].children[1].style.display = 'block';
         });
