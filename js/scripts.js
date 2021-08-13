@@ -62,7 +62,17 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
 
         var strongEl=$('<strong>');
         strongEl.attr('style','padding-right:5px');
-        strongEl.text(movieTitle[x].title);
+
+        var finalTitle;
+
+        if(movieTitle[x].media_type=="movie"){
+            finalTitle=movieTitle[x].title;
+        }
+        else if(movieTitle[x].media_type=="tv"){
+            finalTitle=movieTitle[x].name;
+
+        }
+        strongEl.text(finalTitle);
 
         var smallEl=$('<small>');
         smallEl.text(movieTitle[x].release_date);
@@ -73,8 +83,11 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         movieTextEl.text(movieTitle[x].overview);
 
         var movieUrlEl=$('<a>');
-        movieUrlEl.attr('href',movieUrl+movieTitle[x].title);
-        movieUrlEl.text(movieUrl+movieTitle[x].title);
+
+
+
+        movieUrlEl.attr('href',movieUrl+finalTitle);
+        movieUrlEl.text(movieUrl+finalTitle);
 
         cardContentEl.append(boxEl);
         boxEl.append(paragraphEl);
@@ -103,7 +116,7 @@ function api_tmdb() {
         fetch(request_movie).then(function (response) {
             return response.json();
         }).then(async function(data) {
-            
+
             console.log(data.results);
             //Declarations for WIKI
             var apiEndpoint = "https://en.wikipedia.org/w/api.php";

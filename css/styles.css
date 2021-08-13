@@ -29,11 +29,11 @@ a {
   transition: all 0.6s linear;
 }
 body {
-  background: #fff8e9;
+  background: #dbdbdb;
 }
 body .navbar {
   width: 100%;
-  background: #fff;
+  background: #ffffff;
   position: fixed;
   top: 0;
 }
@@ -52,9 +52,9 @@ body main section #module_search {
   border-radius: 10px;
   margin: 0 auto 30px;
   padding: 40px 40px 50px;
-  -webkit-box-shadow: 0 6px 16px -5px rgb(222 209 180);
-  -moz-box-shadow: 0 6px 16px -5px rgb(222 209 180);
-  box-shadow: 0 6px 16px -5px rgb(222 209 180);
+  -webkit-box-shadow: 0 6px 16px -5px rgb(171 171 184);
+  -moz-box-shadow: 0 6px 16px -5px rgb(171 171 184);
+  box-shadow: 0 6px 16px -5px rgb(171 171 184);
 }
 body main section #module_search h1 {
   font-size: 4em;
