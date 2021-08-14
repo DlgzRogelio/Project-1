@@ -28,6 +28,9 @@ Our program wouldn't be possible without the help of free online resources avail
 Bulma is a free, open source framework that provides ready-to-use frontend components that you can easily combine to 
 build responsive web interfaces. [**DOCUMENTATION**](https://bulma.io/)
 
+#### JQuery
+jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript. [**DOCUMENTATION**](https://jquery.com/)
+
 #### THE MOVIE DATABASE (API)
 The Move Database is a free API service with millions of movies, tv shows and people to discover. 
 [**DOCUMENTATION**](https://developers.themoviedb.org/3/getting-started/introduction)
@@ -71,5 +74,10 @@ for (let index = 0; index < data.results.length; index++) {
         return response.json();
         ...
 ```
+Both of the interactions with API's are triggered from the fetch function, an evolution of the XMLHTTPRequest. Bellow we present a general diagram of this functionality:
+
+![image](https://user-images.githubusercontent.com/12967754/129433432-bc60f45a-f5a9-4a98-9580-391f98fc13b0.png)
+
 
 #### BY [_RED TEAM_]((https://dlgzrogelio.github.io/Project-1/))
+
