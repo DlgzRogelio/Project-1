@@ -70,7 +70,6 @@ function deployActor(imgUrl, actorName, resume, movieTitle, ranking, movieUrl){
         }
         else if(movieTitle[x].media_type=="tv"){
             finalTitle=movieTitle[x].name;
-
         }
         strongEl.text(finalTitle);
 
@@ -135,7 +134,6 @@ function api_tmdb() {
                 });
 
             }
-
             document.body.children[1].children[0].children[1].style.display = 'block';
             document.body.children[1].style.padding = '5em 0 0';
         });
