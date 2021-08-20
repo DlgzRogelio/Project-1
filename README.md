@@ -4,7 +4,7 @@
 ##### Project by _RED TEAM_
 [Luis Treviño](https://github.com/ltrevino) / [José Rogelio](https://github.com/DlgzRogelio) / [Carlos Aguirre](https://github.com/ca2los) / [Ian Elizalde](https://github.com/ian-dot)
 
-Movie Mates is a browser engine ready to go for getting all the data related to people on movies and series. Every result 
+Movie Mates is a finder ready to go for getting all the data related to people on movies and series. Every result 
 will be sorted by rating in ascending order. If a name is entered, the program will retrieve the top data you are looking for.
 
 ### Let Movie Mates recommend you the content you need
